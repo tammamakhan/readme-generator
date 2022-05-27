@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
+const getLicenses = require("./utils/licenseUtil");
+const generateMarkdown = require("./utils/generateMarkdown");
 
-// TODO: Create an array of questions for user input
 const questions = [
   "What is your Github username?",
   "What is your email address?",
@@ -12,7 +13,7 @@ const questions = [
   "What does the user need to know about using the repository?",
   "What does the user need to know about contributing to the repository?",
 ];
-const licenses = ["MIT", "APACHE 2.0", "BSD 3", "NONE"];
+const licenses = [...getLicenses().keys(), "NONE"];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}

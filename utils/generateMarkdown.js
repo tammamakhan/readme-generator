@@ -1,23 +1,20 @@
 const getLicenses = require("./licenseUtil");
 
+function renderLicenseLink(license) {
+  let licenseLink = licenses[license].link;
+
+  return `
+    (${licenseLink})
+  `;
+}
+
 function renderLicenseBadge(license) {
   if (license === "NONE") return ``;
 
   let licenses = getLicenses();
   let licenseBadge = licenses[license].badge;
 
-  return `![Github license](${licenseBadge})`;
-}
-
-function renderLicenseLink(license) {
-  if (license === "NONE") return ``;
-
-  let licenses = getLicenses();
-  let licenseLink = licenses[license].link;
-
-  return `
-    ![View License](${licenseLink})
-  `;
+  return `[![License](${licenseBadge})]${renderLicenseLink(license)}`;
 }
 
 function renderTitleSection(title, license) {
@@ -78,7 +75,6 @@ function renderLicenseSection(license) {
 
   return `
     This project is licensed under the ${license} license.
-    ${renderLicenseLink()}
   `;
 }
 
