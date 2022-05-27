@@ -40,7 +40,9 @@ function renderTableOfContentsSection() {
 
 * [Contributing](#contributing)
 
-* [Tests](#testing)`;
+* [Tests](#tests)
+
+* [Questions](#questions)`;
 }
 
 function renderInstallationSection(installation) {
@@ -60,9 +62,15 @@ ${usage}`;
 }
 
 function renderLicenseSection(license) {
-  if (license === "NONE") return `This project is not under a license.`;
+  if (license === "NONE") {
+    return `## License
+    
+This project is not under a license.`;
+  }
 
-  return `This project is licensed under the ${license} license.`;
+  return `## License
+
+This project is licensed under the ${license} license.`;
 }
 
 function renderContributingSection(contributing) {
