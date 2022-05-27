@@ -1,11 +1,10 @@
 const getLicenses = require("./licenseUtil");
 
 function renderLicenseLink(license) {
+  let licenses = getLicenses();
   let licenseLink = licenses[license].link;
 
-  return `
-    (${licenseLink})
-  `;
+  return `(${licenseLink})`;
 }
 
 function renderLicenseBadge(license) {
@@ -18,114 +17,94 @@ function renderLicenseBadge(license) {
 }
 
 function renderTitleSection(title, license) {
-  return `
-    # ${title}
-    ${renderLicenseBadge(license)}
-  `;
+  return `# ${title}
+${renderLicenseBadge(license)}`;
 }
 
 function renderDescriptionSection(description) {
-  return `
-    ## Description
+  return `## Description
 
-    ${description}
-  `;
+${description}`;
 }
 
 function renderTableOfContentsSection() {
-  return `
-    ## Table of Contents
+  return `## Table of Contents
 
-    * [Description](#description)
+* [Description](#description)
 
-    * [Installation](#installation)
+* [Installation](#installation)
 
-    * [Usage](#usage)
+* [Usage](#usage)
 
-    * [License](#license)
+* [License](#license)
 
-    * [Contributing](#contributing)
+* [Contributing](#contributing)
 
-    * [Tests](#testing)
-  `;
+* [Tests](#testing)`;
 }
 
 function renderInstallationSection(installation) {
-  return `
-    ## Installation
+  return `## Installation
 
-    To install the necessary dependencies, run the following command:
+To install the necessary dependencies, run the following command:
 
-    \`\`\`
-    ${installation}
-    \`\`\`
-  `;
+\`\`\`
+${installation}
+\`\`\``;
 }
 
 function renderUsageSection(usage) {
-  return `
-    ## Usage
+  return `## Usage
 
-    ${usage}
-  `;
+${usage}`;
 }
 
 function renderLicenseSection(license) {
   if (license === "NONE") return `This project is not under a license.`;
 
-  return `
-    This project is licensed under the ${license} license.
-  `;
+  return `This project is licensed under the ${license} license.`;
 }
 
 function renderContributingSection(contributing) {
-  return `
-    ## Contributing
+  return `## Contributing
 
-    ${contributing}
-  `;
+${contributing}`;
 }
 
 function renderTestInstructionsSection(testInstructions) {
-  return `
-    ## Tests
+  return `## Tests
 
-    To run tests, run the following command:
+To run tests, run the following command:
 
-    \`\`\`
-    ${testInstructions}
-    \`\`\`
-  `;
+\`\`\`
+${testInstructions}
+\`\`\``;
 }
 
 function renderQuestionsSection(email, githubUsername) {
-  return `
-    ## Questions
+  return `## Questions
 
-    If you have any questions about the repository, open an issue or contact me directly at ${email}. You can find more of my work at [${githubUsername}](https://github.com/${githubUsername}/).
-  `;
+If you have any questions about the repository, open an issue or contact me directly at ${email}. You can find more of my work at [${githubUsername}](https://github.com/${githubUsername}/).`;
 }
 
 function generateMarkdown(data) {
-  return `
-    ${renderTitleSection(data.title)}
+  return `${renderTitleSection(data.title, data.license)}
 
-    ${renderDescriptionSection(data.description)}
+${renderDescriptionSection(data.description)}
 
-    ${renderTableOfContentsSection()}
+${renderTableOfContentsSection()}
 
-    ${renderInstallationSection(data.installation)}
+${renderInstallationSection(data.installation)}
 
-    ${renderUsageSection(data.usage)}
+${renderUsageSection(data.usage)}
 
-    ${renderLicenseSection(data.license)}
+${renderLicenseSection(data.license)}
 
-    ${renderContributingSection(data.contributing)}
+${renderContributingSection(data.contributing)}
 
-    ${renderTestInstructionsSection(data.testInstructions)}
+${renderTestInstructionsSection(data.testInstructions)}
 
-    ${renderQuestionsSection(data.email, data.githubUsername)}
-    `;
+${renderQuestionsSection(data.email, data.githubUsername)}`;
 }
 
 module.exports = generateMarkdown;
