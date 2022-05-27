@@ -1,4 +1,5 @@
 // TODO: Include packages needed for this application
+const fs = require("fs");
 const getLicenses = require("./utils/licenseUtil");
 const generateMarkdown = require("./utils/generateMarkdown");
 
@@ -15,11 +16,32 @@ const questions = [
 ];
 const licenses = [...getLicenses().keys(), "NONE"];
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+  return new Promise((resolve, reject) => {
+    fs.writeFile(fileName, data, (err) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+      resolve({
+        ok: true,
+        message: "README created.",
+      });
+    });
+  });
+}
 
-// TODO: Create a function to initialize app
-function init() {}
+function promptUser() {}
+
+function init() {
+  promptUser()
+    .then((readmeData) => {
+      return writeToFile("README.md", generateMarkdown(readmeData));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 // Function call to initialize app
 init();
