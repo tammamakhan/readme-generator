@@ -13,9 +13,11 @@ npm i
 ```
 
 ## Usage
+To use the application, run the following command:
 ```
 node index.js
 ```
+See a walkthrough video [here](https://drive.google.com/file/d/1fKCV2Jn-kxdVs1gl2nVOF5DfSYIbtv7D/view?usp=sharing)
 
 ## User Story
 
