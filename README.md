@@ -13,8 +13,9 @@ npm i
 ```
 
 ## Usage
-
+```
 node index.js
+```
 
 ## User Story
 
